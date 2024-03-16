@@ -1,0 +1,6 @@
+@cloud_storage.API_HostAddress = http://localhost:5108
+
+GET {{cloud_storage.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
