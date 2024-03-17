@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace cloud_storage.Application.UseCases.Users.UploadProfilePhoto
 {
-    public class UploadProfilePhotoUseCase
+    public class UploadProfilePhotoUseCase : IUploadProfilePhotoUseCase
     {
         private readonly IStorageService _storageService;
         public UploadProfilePhotoUseCase(IStorageService storageService)
@@ -21,25 +21,23 @@ namespace cloud_storage.Application.UseCases.Users.UploadProfilePhoto
         public void Execute(IFormFile file)
         {
             var fileStream = file.OpenReadStream();
-            bool fileValid = fileStream.Is<JointPhotographicExpertsGroup>();
 
-            if (fileValid is false)
+            if (fileStream.Is<JointPhotographicExpertsGroup>() == false && fileStream.Is<PortableNetworkGraphic>() == false)
                 throw new Exception("The file isn't an image.");
 
             var user = GetFromDatabase();
-
             _storageService.Upload(file, user);
         }
 
         private User GetFromDatabase()
         {
-            User X = new User();
-
             return new User
             {
                 Id = 1,
                 Name = "Thiago",
                 Email = "thiagomsoares1230@gmail.com",
+                RefreshToken = "1//04kH4mJkIyAvtCgYIARAAGAQSNwF-L9IrK_kt5ipTFZfVo6yTw4xZxENvX4cdUzVPLVYg-_OmaFXcDwQwAbEL4kvrqg56mRwWeMI",
+                AccessToken = "ya29.a0Ad52N39U-_ryV-WR_aHCo0fFYix5LmaL3A-yp3zih-9BFY2snuvfJwH4SzT9-Xok0hD5_0CjkLrw75TI3FfYBf5VdigmatXpSqpxQR428tIgxAoTta7EAyCm952z-_SFTwWvGww4Wuu__EtvZElfHiyQUYDP2NzdvoC4aCgYKAQMSARISFQHGX2MiLFaj7a9vtyszrJiCaXLYSg0171"
             };
         }
     }

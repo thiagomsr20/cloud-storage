@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using cloud_storage.Application.UseCases.User.UploadProfilePhoto;
+using cloud_storage.Application.UseCases.Users.UploadProfilePhoto;
 
 namespace cloud_storage.API.Controller
 {
@@ -8,17 +8,15 @@ namespace cloud_storage.API.Controller
     public class StorageController : ControllerBase
     {
         [HttpPost]
-        public IActionResult UploadFile(IFormFile file)
+        public IActionResult UploadFile([FromServices] IUploadProfilePhotoUseCase useCase, IFormFile file)
         {
-            var UploadProfilePhoto = new UploadProfilePhotoUseCase();
-
             try
             {
-                UploadProfilePhoto.Execute(file);
+                useCase.Execute(file);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest("The file isn't an image");
+                return BadRequest($"Error: {ex.Message}");
             }
 
             return Created();
