@@ -3,8 +3,9 @@
 </br>
 
 Projeto desenvolvido na semana C# gratuíta da Rocketseat.
-(Projeto apenas para prática do conhecimento absorvido nas lives, algumas coisas que estão no código, estão faltando boas práticas, como é o caso dos tokens e dados do usuário estampados no código open source)
+
+(Projeto apenas para fixação de conceitos, autenticação e autorização e também dados estampados no código open source)
 
 <h2>Aprendizado</h2>
 
-Achei ótima a oportunidade de participar desse evento, pois ao acompanhar um sênior C# programando, pude ter muitos insights sobre arquitetura, princípios do SOLID, autorização e autenticação de API usando criptografia, alguns temas eu já vinha vendo conteúdo na internet sobre, que é o caso do SOLID, onde o "S" de SOLID, me fez mudar a forma que eu programo, seja no trabalho ou for fun.
+Achei ótima a oportunidade de participar desse evento, pude ter muitos insights sobre arquitetura, princípios do SOLID e DDD, alguns conceitos eu já vinha estudando na internet, que é o caso do SOLID, onde o "S" do SOLID, me fez mudar a forma que eu programo, seja no trabalho ou for fun.
